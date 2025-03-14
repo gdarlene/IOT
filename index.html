@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MqtGlow</title>
+<!--    Import the script to help us to connect to websockets-->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <style>
+        body{
+        font-family:verdana;
+        color:black;
+        background-color:rgb(5,17,23);
+        }
+        .on, button:hover{
+        cursor: pointer;
+        background-color: white;
+        }
+        .on, button:hover{
+        background-color: black;
+        }
+        .contents{
+        border: 2px solid white;
+        padding: 10px 20px;
+        margin: 80px 50px;
+        align-content:center;
+        color:white;
+        }
+    </style>
+</head>
+<body>
+<div class="contents">
+<h2>Light Glow with mqtt</h2>
+<button onclick="sendCommand('ON')" style="border:1px solid gold" class="on">💡</button> ON<br>
+<button onclick="sendCommand('OFF')">⚡</button> OFF
+<p id="status">Previous instruction: None</p>
+</div>
+<script>
+    const broker= "wss://test.mosquitto.org:8081/mqtt";
+    const topic ="/student_group/light_control";
+    const client=mqtt.connect(broker);
+    client.on("connect",function(){
+    console.log("Connected to broker");
+    });
+    function sendCommand(command){
+    client.publish(topic,command);
+    document.getElementById("status").innerText="Previous instruction: " + command;
+    }
+</script>
+</body>
+</html>
