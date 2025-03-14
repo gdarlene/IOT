@@ -10,9 +10,9 @@ This web application simulates IOT specifically using websockets for real time c
 - python script helps as the IOT device processing information
 ## Usage:
 To run this `Ensure you have python installed`
-- Run `python glowSimulator.py`
+- Run `python glowSimulator.py` in your terminal
 - open index.html in your browser
 - Interact with the simple application while in the background python will receive your commands
 
 ## Copyright
-© 2025 ganza.iot. All rights reserved.
+© 2025 inganji.tech. All rights reserved.
